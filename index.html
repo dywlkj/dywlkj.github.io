@@ -796,7 +796,7 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             section {
                 padding: 80px 0;
             }
@@ -911,20 +911,22 @@
                     </div>
 
                     <div class="card">
+                        <div class="card-badge">新品上市</div>
                         <div class="card-img">
-                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-lock"></i>
                         </div>
                         <div class="card-content">
-                            <h3>ESP32多协议物联网网关</h3>
+                            <h3>智能门锁永续供电系统</h3>
                             <ul class="features-list">
-                                <li>Zigbee3.0/Thread/Matter支持</li>
-                                <li>-40℃~85℃工业级运行</li>
-                                <li>云端配置自动同步</li>
-                                <li>低功耗设计</li>
+                                <li>双路智能供电</li>
+                                <li>超长续航能力</li>
+                                <li>多重安全保障</li>
+                                <li>便捷安装维护</li>
                             </ul>
-                            <a href="product-esp32-gateway.html" class="card-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                            <a href="gdxt.html" class="card-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
+
 
                     <div class="card">
                         <div class="card-badge">新品上市</div>
@@ -940,6 +942,22 @@
                                 <li>低功耗设计</li>
                             </ul>
                             <a href="product-fishtank.html" class="card-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>ESP32多协议物联网网关</h3>
+                            <ul class="features-list">
+                                <li>Zigbee3.0/Thread/Matter支持</li>
+                                <li>-40℃~85℃工业级运行</li>
+                                <li>云端配置自动同步</li>
+                                <li>低功耗设计</li>
+                            </ul>
+                            <a href="product-esp32-gateway.html" class="card-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -1067,7 +1085,7 @@
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
-    
+
     <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
     </div>
@@ -1107,7 +1125,7 @@
 
         // 回到顶部按钮
         const backToTopBtn = document.getElementById('backToTop');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopBtn.classList.add('show');
@@ -1117,7 +1135,7 @@
                 document.querySelector('.navbar').classList.remove('scrolled');
             }
         });
-        
+
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1145,7 +1163,7 @@
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-10px)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
             });
