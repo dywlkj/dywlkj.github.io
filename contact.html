@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一网络科技 - 联系我们</title>
+    <title>联系我们 - 第一网络科技</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 全局样式 */
         :root {
             --primary: #1a56db;     /* 科技蓝 */
             --secondary: #00c897;   /* 生态绿 */
@@ -434,20 +435,28 @@
             border-radius: 10px;
             margin-bottom: 30px;
             display: none;
+            align-items: center;
+        }
+
+        .success-message i {
+            margin-right: 10px;
+            font-size: 1.5rem;
         }
 
         /* 管理面板样式 */
         .admin-panel {
             display: none;
             position: fixed;
-            top: 80px;
+            top: 100px;
             right: 20px;
             z-index: 2000;
             background: white;
             border-radius: var(--card-radius);
             box-shadow: var(--shadow-hover);
-            padding: 15px;
-            width: 300px;
+            padding: 20px;
+            width: 400px;
+            max-height: 80vh;
+            overflow: hidden;
         }
 
         .admin-header {
@@ -462,6 +471,7 @@
         .admin-header h3 {
             margin: 0;
             color: var(--dark);
+            font-size: 1.5rem;
         }
 
         .close-admin {
@@ -470,6 +480,11 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .close-admin:hover {
+            color: var(--danger);
         }
 
         .login-form {
@@ -483,6 +498,7 @@
         .messages-list {
             max-height: 400px;
             overflow-y: auto;
+            padding-right: 10px;
         }
 
         .message-item {
@@ -524,6 +540,7 @@
         .message-content {
             color: var(--gray);
             margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         .message-actions {
@@ -533,12 +550,15 @@
         }
 
         .message-btn {
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
             border: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .btn-reply {
@@ -567,12 +587,195 @@
             font-size: 20px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .admin-link:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .footer-logo .logo-text {
+            color: white;
+            font-size: 22px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4:after, .footer-contact h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+        }
+
+        .footer-contact p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact p i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* 主题切换 */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
         }
 
         /* 响应式设计 */
         @media (max-width: 992px) {
             .contact-container {
                 gap: 30px;
+            }
+            
+            .admin-panel {
+                width: 350px;
             }
         }
 
@@ -614,11 +817,12 @@
             .contact-hero h1 {
                 font-size: 2.5rem;
             }
-
+            
             .admin-panel {
                 width: calc(100% - 40px);
                 left: 20px;
                 top: 100px;
+                right: auto;
             }
         }
 
@@ -638,6 +842,11 @@
             .company-info, .contact-form {
                 padding: 25px;
             }
+            
+            .admin-link {
+                bottom: 150px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -646,7 +855,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="https://raw.githubusercontent.com/dywlkj/dywlkj.github.io/refs/heads/main/IMG/logo.png" alt="第一网络科技" class="logo-img">
+                <img src="https://via.placeholder.com/55x55/1a56db/ffffff?text=LOGO" alt="第一网络科技" class="logo-img">
                 <div class="logo-text"><span>第一网络科技</span></div>
             </a>
 
@@ -673,24 +882,24 @@
     <!-- 管理面板 -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-header">
-            <h3>消息管理</h3>
+            <h3>客户消息管理系统</h3>
             <button class="close-admin" id="closeAdmin"><i class="fas fa-times"></i></button>
         </div>
-
+        
         <div id="loginSection">
             <div class="login-form">
                 <div class="form-group">
                     <label for="adminUser">用户名</label>
-                    <input type="text" id="adminUser" class="form-control" placeholder="管理员账号">
+                    <input type="text" id="adminUser" class="form-control" placeholder="管理员账号" value="admin">
                 </div>
                 <div class="form-group">
                     <label for="adminPass">密码</label>
-                    <input type="password" id="adminPass" class="form-control" placeholder="管理员密码">
+                    <input type="password" id="adminPass" class="form-control" placeholder="管理员密码" value="password123">
                 </div>
                 <button class="btn btn-primary" id="adminLogin" style="width: 100%;">登录管理</button>
             </div>
         </div>
-
+        
         <div id="messagesSection" style="display: none;">
             <h4>收到的消息 <span id="messageCount">(0)</span></h4>
             <div class="messages-list" id="messagesList">
@@ -714,17 +923,17 @@
     <section class="contact-section" id="contact-info">
         <div class="container">
             <h2>联系我们</h2>
-
+            
             <div class="success-message" id="successMessage">
                 <i class="fas fa-check-circle"></i> 您的消息已成功发送！我们将尽快回复您。
             </div>
-
+            
             <div class="contact-container">
                 <div class="company-info">
                     <h3>公司介绍</h3>
                     <p>第一网络科技成立于2005年，是领先的嵌入式智能硬件解决方案提供商，专注于为全球客户提供核心硬件开发与AIoT生态系统构建服务。我们以AI8051U/ESP32/STM32全栈开发为核心，覆盖从单片机底层驱动到云端数据平台的全链路技术。</p>
                     <p>我们的使命是通过创新的硬件技术和物联网解决方案，帮助客户实现数字化转型，提升产品竞争力。多年来，我们已为智能家居、工业自动化、智慧农业等多个领域提供了可靠的技术支持。</p>
-
+                    
                     <div class="contact-info">
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -735,7 +944,7 @@
                                 <p>香港九龙观塘道创新中心18层</p>
                             </div>
                         </div>
-
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-phone-alt"></i>
@@ -745,7 +954,7 @@
                                 <p><a href="tel:18529090901">18529090901</a></p>
                             </div>
                         </div>
-
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
@@ -755,7 +964,7 @@
                                 <p><a href="mailto:18529090901@163.com">18529090901@163.com</a></p>
                             </div>
                         </div>
-
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-clock"></i>
@@ -767,47 +976,47 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="contact-form" id="contact-form">
                     <h3>发送消息</h3>
                     <p>请填写以下表单，我们将尽快回复您</p>
-
+                    
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">您的姓名</label>
                             <input type="text" id="name" class="form-control" placeholder="请输入您的姓名" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="email">电子邮箱</label>
                             <input type="email" id="email" class="form-control" placeholder="请输入您的电子邮箱" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="phone">联系电话</label>
                             <input type="tel" id="phone" class="form-control" placeholder="请输入您的联系电话">
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="subject">主题</label>
                             <input type="text" id="subject" class="form-control" placeholder="请输入主题" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="message">留言内容</label>
                             <textarea id="message" class="form-control" placeholder="请输入您的留言内容" required></textarea>
                         </div>
-
+                        
                         <button type="submit" class="btn btn-primary" style="width: 100%;">发送消息</button>
                     </form>
                 </div>
             </div>
-
+            
             <div class="map-container">
                 <!-- 嵌入百度地图 -->
                 <iframe src="https://j.map.baidu.com/2f/OPm" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
+            
             <div class="hours-section">
                 <h2 class="text-center">工作时间</h2>
                 <div class="hours-grid">
@@ -820,7 +1029,7 @@
                             <li><span class="day">周日</span> <span class="time">休息</span></li>
                         </ul>
                     </div>
-
+                    
                     <div class="hours-card">
                         <i class="fas fa-headset"></i>
                         <h3>客户支持</h3>
@@ -830,7 +1039,7 @@
                             <li><span class="day">周日</span> <span class="time">10:00 - 15:00</span></li>
                         </ul>
                     </div>
-
+                    
                     <div class="hours-card">
                         <i class="fas fa-tools"></i>
                         <h3>技术服务</h3>
@@ -844,6 +1053,74 @@
             </div>
         </div>
     </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="logo-text"><span>第一网络科技</span></div>
+                    </div>
+                    <p>智联万物，芯启未来 - 嵌入式硬件核心解决方案专家</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-qq"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> 网站首页</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> 关于我们</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> 产品中心</a></li>
+                        <li><a href="solutions.html"><i class="fas fa-chevron-right"></i> 解决方案</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> 联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>产品分类</h4>
+                    <ul>
+                        <li><a href="products.html?category=ai8051"><i class="fas fa-chevron-right"></i> AI8051U系列</a></li>
+                        <li><a href="products.html?category=esp32"><i class="fas fa-chevron-right"></i> ESP32系列</a></li>
+                        <li><a href="products.html?category=stm32"><i class="fas fa-chevron-right"></i> STM32系列</a></li>
+                        <li><a href="products.html?category=modules"><i class="fas fa-chevron-right"></i> 物联网模块</a></li>
+                        <li><a href="products.html?category=custom"><i class="fas fa-chevron-right"></i> 定制开发</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>联系我们</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 香港九龙观塘道创新中心18层</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:18529090901">18529090901</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:18529090901@163.com">18529090901@163.com</a></p>
+                    <p><i class="fas fa-clock"></i> 周一至周五 9:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>© 2005 第一网络科技 <a href="index.html">hkdywl.cn</a> 版权所有 | 粤ICP备168918号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 功能组件 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -878,24 +1155,59 @@
             });
         });
 
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+                navbar.classList.add('scrolled');
+            } else {
+                backToTopBtn.classList.remove('show');
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
         // 表单提交处理
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
-
+        
         // 模拟消息存储
         let messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
-
+        
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
+                
                 // 获取表单数据
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const phone = document.getElementById('phone').value;
                 const subject = document.getElementById('subject').value;
                 const message = document.getElementById('message').value;
-
+                
                 // 创建消息对象
                 const newMessage = {
                     id: Date.now(),
@@ -907,27 +1219,32 @@
                     date: new Date().toISOString(),
                     status: '未读'
                 };
-
+                
                 // 保存到本地存储
                 messages.push(newMessage);
                 localStorage.setItem('contactMessages', JSON.stringify(messages));
-
+                
                 // 显示成功消息
-                successMessage.style.display = 'block';
-
+                successMessage.style.display = 'flex';
+                
                 // 滚动到顶部
                 window.scrollTo({
                     top: document.getElementById('contact-info').offsetTop - 80,
                     behavior: 'smooth'
                 });
-
+                
                 // 重置表单
                 contactForm.reset();
-
+                
                 // 更新消息列表（如果管理员已登录）
                 if (isAdminLoggedIn) {
                     updateMessagesList();
                 }
+                
+                // 5秒后隐藏成功消息
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
             });
         }
 
@@ -940,23 +1257,23 @@
         const messagesSection = document.getElementById('messagesSection');
         const messagesList = document.getElementById('messagesList');
         const messageCount = document.getElementById('messageCount');
-
+        
         let isAdminLoggedIn = false;
-
+        
         // 切换管理面板
         adminLink.addEventListener('click', () => {
             adminPanel.style.display = 'block';
         });
-
+        
         closeAdmin.addEventListener('click', () => {
             adminPanel.style.display = 'none';
         });
-
+        
         // 管理员登录
         adminLoginBtn.addEventListener('click', () => {
             const username = document.getElementById('adminUser').value;
             const password = document.getElementById('adminPass').value;
-
+            
             // 简单验证（实际应用中应使用更安全的验证方式）
             if (username === 'admin' && password === 'password123') {
                 isAdminLoggedIn = true;
@@ -967,27 +1284,32 @@
                 alert('用户名或密码错误！');
             }
         });
-
+        
         // 更新消息列表
         function updateMessagesList() {
             // 从本地存储获取最新消息
             messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
-
+            
             // 更新消息计数
             messageCount.textContent = `(${messages.length})`;
-
+            
             // 清空当前列表
             messagesList.innerHTML = '';
-
+            
             // 按日期排序（最新优先）
-            const sortedMessages = [...messages].sort((a, b) =>
+            const sortedMessages = [...messages].sort((a, b) => 
                 new Date(b.date) - new Date(a.date));
-
+            
+            if (sortedMessages.length === 0) {
+                messagesList.innerHTML = '<div class="text-center" style="padding: 20px;">暂无消息</div>';
+                return;
+            }
+            
             // 添加消息到列表
             sortedMessages.forEach(msg => {
                 const messageDate = new Date(msg.date);
                 const formattedDate = `${messageDate.getFullYear()}-${(messageDate.getMonth()+1).toString().padStart(2, '0')}-${messageDate.getDate().toString().padStart(2, '0')} ${messageDate.getHours().toString().padStart(2, '0')}:${messageDate.getMinutes().toString().padStart(2, '0')}`;
-
+                
                 const messageElement = document.createElement('div');
                 messageElement.className = 'message-item';
                 messageElement.innerHTML = `
@@ -1006,10 +1328,10 @@
                         <button class="message-btn btn-delete" data-id="${msg.id}"><i class="fas fa-trash"></i> 删除</button>
                     </div>
                 `;
-
+                
                 messagesList.appendChild(messageElement);
             });
-
+            
             // 添加删除按钮事件
             document.querySelectorAll('.btn-delete').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1017,19 +1339,19 @@
                     deleteMessage(id);
                 });
             });
-
+            
             // 添加回复按钮事件
             document.querySelectorAll('.btn-reply').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const id = parseInt(this.getAttribute('data-id'));
                     const message = messages.find(m => m.id === id);
                     if (message) {
-                        alert(`回复给: ${message.email}\n主题: Re: ${message.subject}`);
+                        alert(`回复给: ${message.email}\n主题: Re: ${message.subject}\n\n您可以在此处撰写回复邮件内容`);
                     }
                 });
             });
         }
-
+        
         // 删除消息
         function deleteMessage(id) {
             if (confirm('确定要删除这条消息吗？')) {
@@ -1038,6 +1360,9 @@
                 updateMessagesList();
             }
         }
+        
+        // 页面加载时初始化消息
+        updateMessagesList();
     </script>
 </body>
 </html>
